@@ -430,7 +430,7 @@ function getStringFromTemplate(firstName, lastName) {
  */
 function extractNameFromTemplate(value) {
   const subString = 'Hello, ';
-  const index = value.lastIndexOf(subString);
+  const index = value.indexOf(subString);
   if (index !== -1) {
     return `${value.slice(index + subString.length, value.length - 1)}`;
   }
@@ -448,8 +448,9 @@ function extractNameFromTemplate(value) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  const regex = /[a-zA-Z]/g;
+  return str.match(regex).join('');
 }
 
 /**
